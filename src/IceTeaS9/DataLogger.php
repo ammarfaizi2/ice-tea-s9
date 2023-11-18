@@ -28,5 +28,19 @@ class DataLogger
 	 */
 	public function execute()
 	{
+		$this->logFrom();
+	}
+
+	/**
+	 * Log from.
+	 */
+	private function logFrom()
+	{
+		$e = $this->it->event();
+		$u = $e->message->from;
+
+		$logger = new Logger\User($this->it->db(), $this->it->tg());
+		$logger->setUser($u);
+		$logger->execute();
 	}
 }

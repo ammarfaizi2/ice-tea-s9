@@ -71,7 +71,6 @@ class Telegram
 	public function __call(string $name, array $args): array
 	{
 		$url = sprintf("%s%s/%s", ICT_TG_BOT_ENDPOINT, ICT_TG_BOT_TOKEN, $name);
-
 		curl_setopt_array($this->curl, [
 			CURLOPT_URL => $url,
 			CURLOPT_RETURNTRANSFER => true,

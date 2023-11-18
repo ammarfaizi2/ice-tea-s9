@@ -26,6 +26,7 @@ abstract class LoggerFoundation
 	 */
 	public function __construct(DB $db, Telegram $tg)
 	{
+		date_default_timezone_set("UTC");
 		$this->db = $db;
 		$this->tg = $tg;
 	}

@@ -6,6 +6,24 @@
 
 namespace IceTeaS9;
 
-abstract class TelegramObjFoundation
+use JsonSerializable;
+
+abstract class TelegramObjFoundation implements JsonSerializable
 {
+	/**
+	 * @param string $key
+	 * @return mixed
+	 */
+	public function __get(string $key)
+	{
+		return $this->{$key};
+	}
+
+	/**
+	 * @param array $data
+	 */
+	public static function create(array $data)
+	{
+		return new static($data);
+	}
 }

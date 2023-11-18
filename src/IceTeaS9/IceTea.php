@@ -22,6 +22,11 @@ class IceTea
 	private Telegram $tg;
 
 	/**
+	 * @var TelegramEvent
+	 */
+	private TelegramEvent $event;
+
+	/**
 	 * Constructor.
 	 *
 	 * @param string $json
@@ -29,6 +34,7 @@ class IceTea
 	public function __construct(string $json)
 	{
 		$this->tg = new Telegram($json);
+		$this->event = new TelegramEvent($this->tg->getData());
 	}
 
 	/**
@@ -48,6 +54,14 @@ class IceTea
 	public function tg(): Telegram
 	{
 		return $this->tg;
+	}
+
+	/**
+	 * @return TelegramEvent
+	 */
+	public function event(): TelegramEvent
+	{
+		return $this->event;
 	}
 
 	/**

@@ -6,6 +6,8 @@
 
 namespace IceTeaS9;
 
+use PDO;
+
 class DB
 {
 	/**
@@ -27,5 +29,15 @@ class DB
 	public static function create(): DB
 	{
 		return new self;
+	}
+
+	/**
+	 * @param string $name
+	 * @param array  $arguments
+	 * @return mixed
+	 */
+	public function __call(string $name, array $arguments)
+	{
+		return $this->pdo->{$name}(...$arguments);
 	}
 }

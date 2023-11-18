@@ -13,27 +13,37 @@ class User extends TelegramObjFoundation
 	/**
 	 * @var int
 	 */
-	private int $id;
+	public int $id;
 
 	/**
 	 * @var string
 	 */
-	private string $first_name;
+	public string $first_name;
 
 	/**
 	 * @var ?string
 	 */
-	private ?string $last_name = NULL;
+	public ?string $last_name = NULL;
 
 	/**
 	 * @var ?string
 	 */
-	private ?string $username = NULL;
+	public ?string $username = NULL;
 
 	/**
 	 * @var ?string
 	 */
-	private ?string $language_code = NULL;
+	public ?string $language_code = NULL;
+
+	/**
+	 * @var ?bool
+	 */
+	public bool $is_bot = false;
+
+	/**
+	 * @var bool
+	 */
+	public bool $is_premium = false;
 
 	/**
 	 * Constructor.
@@ -47,14 +57,27 @@ class User extends TelegramObjFoundation
 		$this->last_name = $data["last_name"] ?? NULL;
 		$this->username = $data["username"] ?? NULL;
 		$this->language_code = $data["language_code"] ?? NULL;
+
+		if (isset($data["is_bot"]))
+			$this->is_bot = (bool)$data["is_bot"];
+
+		if (isset($data["is_premium"]))
+			$this->is_premium = (bool)$data["is_premium"];
 	}
 
 	/**
-	 * @param string $key
-	 * @return mixed
+	 * @return array
 	 */
-	public function __get(string $key)
+	public function jsonSerialize(): array
 	{
-		return $this->{$key};
+		return [
+			"id" => $this->id,
+			"first_name" => $this->first_name,
+			"last_name" => $this->last_name,
+			"username" => $this->username,
+			"language_code" => $this->language_code,
+			"is_bot" => $this->is_bot,
+			"is_premium" => $this->is_premium
+		];
 	}
 }
