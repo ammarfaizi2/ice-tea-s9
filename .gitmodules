@@ -1,0 +1,3 @@
+[submodule "submodules/swoole-src"]
+	path = submodules/swoole-src
+	url = https://github.com/swoole/swoole-src.git

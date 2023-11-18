@@ -1,0 +1,20 @@
+<?php
+// SPDX-License-Identifier: GPL-2.0-only
+
+const ICT_DB_HOST = "127.0.0.1";
+const ICT_DB_NAME = "test";
+const ICT_DB_USER = "root";
+const ICT_DB_PASS = "123123";
+const ICT_DB_PORT = 3306;
+
+const ICT_DB_PDO_ARGS = [
+	"mysql:host=" . ICT_DB_HOST . ";port=" . ICT_DB_PORT . ";dbname=" . ICT_DB_NAME . ";charset=utf8mb4",
+	ICT_DB_USER,
+	ICT_DB_PASS,
+	[
+		PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+	],
+];
+
+const ICT_TG_BOT_ENDPOINT = "https://api.telegram.org/bot";
+const ICT_TG_BOT_TOKEN = "123123:aaaaaaaaaaaaaaaaaaaaaa";
