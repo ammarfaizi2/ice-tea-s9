@@ -36,6 +36,14 @@ class Telegram
 	}
 
 	/**
+	 * Destructor.
+	 */
+	public function __destruct()
+	{
+		@curl_close($this->curl);
+	}
+
+	/**
 	 * @return array
 	 */
 	public function getData(): array
